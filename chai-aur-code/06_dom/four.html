@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chai aur code | DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+   
+</body>
+<script>
+
+// innerHTML se
+function addLanguage(langName){
+
+    const li = document.createElement('li');
+    li.innerHTML = `${langName}`
+    document.querySelector('.language').appendChild(li)
+}
+    addLanguage("python")
+    addLanguage("typescript")
+
+    // another way , optimizing way
+    // appendChild se - optimizing way
+    function addOptiLanguage(langName){
+       const li = document.createElement('li') // same as prev.
+       // li.innerHTML = `${langName}` innerHtml ki jagha appendChild
+
+    //    const addText = document.createTextNode(langName)
+    //    li.appendChild(addText)
+    // or shorthand
+       li.appendChild(document.createTextNode(langName)) 
+       document.querySelector('.language').appendChild(li) // same as prev
+       // inerHTML se acha h appendChild wala process
+    }
+    addOptiLanguage("java")
+
+    // edit the values
+    const secondLang = document.querySelector('li:nth-child(2)')
+    console.log(secondLang);
+    
+    // 1'st approach
+    // secondLang.innerHTML = 'ruby' - not optimized way - innerHTML avoid karna h pura tree travers karta h ye dom ka
+     // 2'nd approach , replaceWith
+     const newli = document.createElement('li')
+     newli.textContent = 'mojo'
+     secondLang.replaceWith(newli)
+
+     // edit - another ex , outerHTML
+     const firstLang = document.querySelector('li:first-child')
+     firstLang.outerHTML = '<li>Typescript</li>'
+
+    // remove element
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
