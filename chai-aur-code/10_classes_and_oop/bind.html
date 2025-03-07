@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <!-- <button onclick="console.log('button clicked')" >button clicked</button> -->
+    <button>button clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = 'React'
+            this.server = 'https://localhost:3000'
+
+            // requirement
+            // 1. button ka refrence chahiye and 2. clikc karne pe ek method call ho jaye
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+
+        }
+        handleClick (){
+            console.log('button clicked');
+            console.log(this.server); // bind karna padega
+            console.log(this);
+            
+            
+            
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
